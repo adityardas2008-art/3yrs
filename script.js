@@ -1,6 +1,6 @@
 /* ==========================================
-   LOVE STORY WEBSITE
-   PART 1
+          LOVE STORY WEBSITE
+            SCRIPT PART 1
 ========================================== */
 
 let currentPage = 0;
@@ -19,11 +19,17 @@ page.classList.remove("active");
 
 pages[index].classList.add("active");
 
-window.scrollTo(0,0);
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
 
 }
 
-nextButtons.forEach((button)=>{
+nextButtons.forEach(button=>{
 
 button.addEventListener("click",()=>{
 
@@ -40,44 +46,12 @@ showPage(currentPage);
 });
 
 /* ==========================================
-      FLOATING STARS
-========================================== */
-
-function createStars(){
-
-for(let i=0;i<120;i++){
-
-let star=document.createElement("div");
-
-star.className="star";
-
-star.style.left=Math.random()*100+"vw";
-
-star.style.top=Math.random()*100+"vh";
-
-star.style.animationDuration=
-
-(4+Math.random()*8)+"s";
-
-star.style.animationDelay=
-
-Math.random()*5+"s";
-
-document.body.appendChild(star);
-
-}
-
-}
-
-createStars();
-
-/* ==========================================
-      FLOATING HEARTS
+           FLOATING HEARTS
 ========================================== */
 
 function createHeart(){
 
-let heart=document.createElement("div");
+const heart=document.createElement("div");
 
 heart.className="heart";
 
@@ -85,13 +59,9 @@ heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=
+heart.style.fontSize=(18+Math.random()*20)+"px";
 
-(15+Math.random()*30)+"px";
-
-heart.style.animationDuration=
-
-(5+Math.random()*4)+"s";
+heart.style.animationDuration=(5+Math.random()*4)+"s";
 
 document.body.appendChild(heart);
 
@@ -103,37 +73,41 @@ heart.remove();
 
 }
 
-setInterval(createHeart,500);
+setInterval(createHeart,600);
 
 /* ==========================================
-      FALLING FLOWERS
+          FALLING FLOWERS
 ========================================== */
 
-const flowers=["🌸","🌺","🌹","💮","🌷"];
+const flowers=[
+
+"🌸",
+
+"🌹",
+
+"🌺",
+
+"💮",
+
+"🌷"
+
+];
 
 function createFlower(){
 
-let flower=document.createElement("div");
+const flower=document.createElement("div");
 
 flower.className="flower";
 
 flower.innerHTML=
 
-flowers[Math.floor(
+flowers[Math.floor(Math.random()*flowers.length)];
 
-Math.random()*flowers.length)];
+flower.style.left=Math.random()*100+"vw";
 
-flower.style.left=
+flower.style.fontSize=(18+Math.random()*20)+"px";
 
-Math.random()*100+"vw";
-
-flower.style.animationDuration=
-
-(5+Math.random()*5)+"s";
-
-flower.style.fontSize=
-
-(18+Math.random()*20)+"px";
+flower.style.animationDuration=(5+Math.random()*5)+"s";
 
 document.body.appendChild(flower);
 
@@ -146,45 +120,93 @@ flower.remove();
 }
 
 setInterval(createFlower,700);
+
 /* ==========================================
-          LOVE QUIZ
+           STARS
 ========================================== */
 
-const questions=document.querySelectorAll(".question");
+function createStars(){
 
-questions.forEach((question)=>{
+for(let i=0;i<120;i++){
 
-const buttons=question.querySelectorAll(".option");
+const star=document.createElement("div");
 
-buttons.forEach((button)=>{
+star.className="star";
 
-button.addEventListener("click",()=>{
+star.style.left=Math.random()*100+"vw";
 
-if(button.classList.contains("correct")){
+star.style.top=Math.random()*100+"vh";
 
-button.style.background="#00c853";
+star.style.animationDuration=(2+Math.random()*4)+"s";
 
-button.innerHTML="❤️ Correct Baby ❤️";
+document.body.appendChild(star);
+
+}
+
+}
+
+createStars();
+/* ==========================================
+            QUIZ LOGIC (CORRECTED)
+========================================== */
+
+const quizPages=document.querySelectorAll("#page4,#page5,#page6,#page7");
+
+quizPages.forEach(page=>{
+
+const options=page.querySelectorAll(".option");
+
+const result=page.querySelector(".quizResult");
+
+const nextButton=page.querySelector(".nextBtn");
+
+options.forEach(option=>{
+
+option.addEventListener("click",()=>{
+
+if(option.classList.contains("correct")){
+
+result.innerHTML="🥹❤️ Yayy!! That's my smart baby. I knew you'd remember. Let's continue our beautiful journey together. ❤️✨";
+
+result.style.color="#7CFF8A";
+
+option.style.background="#16c60c";
+
+option.style.color="white";
+
+nextButton.classList.remove("hidden");
+
+options.forEach(btn=>{
+
+btn.disabled=true;
+
+});
 
 }else{
 
-const msgs=[
+const messages=[
 
-"🤭 Hehe...Try Again Baby ❤️",
+"🤭 Hehe... Think once again baby ❤️",
 
-"🥹 Think Once More Jaan ❤️",
+"🥹 Awww... Not this one. Try again jaan ❤️",
 
-"😘 Not This One...I Know You'll Remember ❤️",
+"😘 My memory queen can do better ❤️",
 
-"🫂 Almost...Try Again Sweetu ❤️"
+"🫂 Almost... Give it one more try ❤️",
+
+"💖 Come on baby... I know you'll remember ❤️"
 
 ];
 
-button.innerHTML=
+result.innerHTML=
 
-msgs[Math.floor(Math.random()*msgs.length)];
+messages[Math.floor(Math.random()*messages.length)];
 
-button.style.background="#ff4081";
+result.style.color="#FFD166";
+
+option.style.background="#ff4d88";
+
+option.style.color="white";
 
 }
 
@@ -194,116 +216,237 @@ button.style.background="#ff4081";
 
 });
 
+/* ==========================================
+       BUTTON RIPPLE EFFECT
+========================================== */
+
+document.querySelectorAll("button").forEach(button=>{
+
+button.addEventListener("click",function(e){
+
+const ripple=document.createElement("span");
+
+ripple.style.position="absolute";
+
+ripple.style.width="12px";
+
+ripple.style.height="12px";
+
+ripple.style.borderRadius="50%";
+
+ripple.style.background="rgba(255,255,255,.8)";
+
+ripple.style.left=e.offsetX+"px";
+
+ripple.style.top=e.offsetY+"px";
+
+ripple.style.transform="scale(0)";
+
+ripple.style.transition=".6s";
+
+this.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.style.transform="scale(20)";
+
+ripple.style.opacity="0";
+
+},20);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
 /* ==========================================
           LOVE METER
 ========================================== */
 
-let tap=0;
+let taps=0;
 
-const tapBtn=document.getElementById("tapButton");
+const tapButton=document.getElementById("tapButton");
 
-const heartBtn=document.getElementById("secretHeart");
+const secretHeart=document.getElementById("secretHeart");
 
-const fill=document.getElementById("loveFill");
+const loveFill=document.getElementById("loveFill");
 
-if(tapBtn){
+const meterNext=document.querySelector("#page9 .nextBtn");
 
-tapBtn.onclick=function(){
+if(tapButton){
 
-tap++;
+tapButton.addEventListener("click",()=>{
 
-let value=tap*9;
+taps++;
 
-if(value>98){
+let percent=taps*10;
 
-value=98;
+if(percent>=100){
 
-heartBtn.style.display="inline-block";
-
-}
-
-fill.style.width=value+"%";
-
-fill.innerHTML=value+"%";
+percent=98;
 
 }
 
+loveFill.style.width=percent+"%";
+
+loveFill.innerHTML=percent+"%";
+
+if(taps>=10){
+
+secretHeart.classList.remove("hidden");
+
 }
 
-if(heartBtn){
+});
 
-heartBtn.onclick=function(){
+}
 
-fill.style.width="100%";
+if(secretHeart){
 
-fill.innerHTML="Infinity ❤️";
+secretHeart.addEventListener("click",()=>{
 
-heartBtn.innerHTML=
+loveFill.style.width="100%";
 
-"Welcome Again To My Heart ❤️";
+loveFill.innerHTML="∞ LOVE ❤️";
+
+secretHeart.innerHTML="❤️ Welcome Again To My Heart ❤️";
 
 flowerBlast();
 
-}
+confettiBlast();
+
+meterNext.classList.remove("hidden");
+
+});
 
 }
 
 /* ==========================================
-        FLOWER BLAST
+         FLOWER SHOWER
 ========================================== */
 
 function flowerBlast(){
 
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
 
 setTimeout(()=>{
 
 createFlower();
 
-},i*40);
+},i*30);
 
 }
 
 }
 
 /* ==========================================
-       FINAL BUTTON
+          CONFETTI
 ========================================== */
 
-const yes=document.querySelector(".yesButton");
+function confettiBlast(){
 
-if(yes){
+const colors=[
 
-yes.onclick=function(){
+"#ff4d88",
 
-alert(
+"#ffd700",
 
-"❤️ Forever Starts From Today ❤️\n\nHappy 3 Years My Love 🫂✨"
+"#ffffff",
 
-);
+"#7c4dff",
 
-};
+"#00e5ff"
+
+];
+
+for(let i=0;i<120;i++){
+
+let confetti=document.createElement("div");
+
+confetti.style.position="fixed";
+
+confetti.style.left=Math.random()*100+"vw";
+
+confetti.style.top="-20px";
+
+confetti.style.width="8px";
+
+confetti.style.height="8px";
+
+confetti.style.borderRadius="50%";
+
+confetti.style.background=
+
+colors[Math.floor(Math.random()*colors.length)];
+
+confetti.style.transition="4s linear";
+
+confetti.style.zIndex="99999";
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+
+confetti.style.transform=
+
+"translateY(110vh) rotate(720deg)";
+
+confetti.style.opacity="0";
+
+},50);
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},4500);
+
+}
 
 }
 
 /* ==========================================
-        PAGE LOADER
+        FINAL BUTTON
 ========================================== */
 
-window.onload=function(){
+const yesButton=document.querySelector(".yesButton");
 
-showPage(0);
+if(yesButton){
+
+yesButton.addEventListener("click",()=>{
+
+confettiBlast();
+
+flowerBlast();
+
+setTimeout(()=>{
+
+alert("❤️ Forever Starts Here ❤️\n\nHappy 3 Years My Love 🥹🫂✨");
+
+},600);
+
+});
 
 }
-
 /* ==========================================
-         END OF PART 2
-========================================== */
-/* ==========================================
-        TYPING EFFECT
+        SCRIPT PART 4
 ========================================== */
 
-function typeWriter(element,speed=50){
+/* ---------- Smooth Page Animation ---------- */
+
+pages.forEach(page=>{
+
+page.style.transition="opacity .7s, transform .7s";
+
+});
+
+/* ---------- Typing Animation ---------- */
+
+function typingEffect(element,speed=35){
 
 if(!element)return;
 
@@ -313,7 +456,7 @@ element.innerHTML="";
 
 let i=0;
 
-function typing(){
+function type(){
 
 if(i<text.length){
 
@@ -321,93 +464,23 @@ element.innerHTML+=text.charAt(i);
 
 i++;
 
-setTimeout(typing,speed);
+setTimeout(type,speed);
 
 }
 
 }
 
-typing();
+type();
 
 }
 
-document.querySelectorAll("h1,h2,p").forEach(el=>{
+document.querySelectorAll("h1,h2").forEach(title=>{
 
-typeWriter(el,25);
+typingEffect(title,25);
 
 });
 
-/* ==========================================
-        CONFETTI EFFECT
-========================================== */
-
-function confetti(){
-
-const colors=["#ff4fa3","#ffd700","#ffffff","#b266ff","#ff6699"];
-
-for(let i=0;i<120;i++){
-
-let c=document.createElement("div");
-
-c.style.position="fixed";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.top="-20px";
-
-c.style.width="8px";
-
-c.style.height="8px";
-
-c.style.background=
-
-colors[Math.floor(Math.random()*colors.length)];
-
-c.style.borderRadius="50%";
-
-c.style.zIndex="9999";
-
-c.style.transition="4s linear";
-
-document.body.appendChild(c);
-
-setTimeout(()=>{
-
-c.style.transform=
-
-"translateY(110vh) rotate(720deg)";
-
-c.style.opacity="0";
-
-},50);
-
-setTimeout(()=>{
-
-c.remove();
-
-},4500);
-
-}
-
-}
-
-/* ==========================================
-     PAGE CHANGE CONFETTI
-========================================== */
-
-nextButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-confetti();
-
-});
-
-});
-
-/* ==========================================
-      HEART CLICK EFFECT
-========================================== */
+/* ---------- Floating Hearts On Click ---------- */
 
 document.addEventListener("click",(e)=>{
 
@@ -421,19 +494,19 @@ heart.style.left=e.clientX+"px";
 
 heart.style.top=e.clientY+"px";
 
-heart.style.fontSize="25px";
+heart.style.fontSize="24px";
 
 heart.style.pointerEvents="none";
 
-heart.style.transition="1s";
+heart.style.transition="1.2s";
 
-heart.style.zIndex="99999";
+heart.style.zIndex="999999";
 
 document.body.appendChild(heart);
 
 setTimeout(()=>{
 
-heart.style.transform="translateY(-80px) scale(2)";
+heart.style.transform="translateY(-90px) scale(2)";
 
 heart.style.opacity="0";
 
@@ -447,9 +520,7 @@ heart.remove();
 
 });
 
-/* ==========================================
-      FINAL PAGE SURPRISE
-========================================== */
+/* ---------- Final Forever Text Glow ---------- */
 
 const forever=document.querySelector(".forever");
 
@@ -461,28 +532,22 @@ forever.style.color=
 
 `hsl(${Math.random()*360},100%,75%)`;
 
-},800);
+},900);
 
 }
 
-/* ==========================================
-      BACKGROUND MUSIC
-========================================== */
+/* ---------- Welcome Animation ---------- */
 
-const music=new Audio("music/love.mp3");
+window.addEventListener("load",()=>{
 
-music.loop=true;
+showPage(0);
 
-music.volume=0.4;
+});
 
-document.body.addEventListener("click",()=>{
-
-music.play().catch(()=>{});
-
-},{once:true});
-
-/* ==========================================
-      END ❤️
-========================================== */
+/* ---------- Console Message ---------- */
 
 console.log("❤️ Happy 3 Years Khushi ❤️");
+
+/* ==========================================
+        END OF SCRIPT
+========================================== */

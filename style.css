@@ -1,49 +1,56 @@
-/* ===========================
-   GOOGLE FONT
-=========================== */
+/* =======================================
+      GOOGLE FONT
+======================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ===========================
-RESET
-=========================== */
+/* =======================================
+            RESET
+======================================= */
 
 *{
+
 margin:0;
+
 padding:0;
+
 box-sizing:border-box;
+
 }
 
 html{
+
 scroll-behavior:smooth;
+
 }
 
 body{
 
 font-family:'Poppins',sans-serif;
 
-overflow:hidden;
-
-background:
-linear-gradient(135deg,#090014,#17002f,#28003d,#0b0015);
+background:linear-gradient(-45deg,#090014,#1d0037,#35004d,#120018);
 
 background-size:400% 400%;
 
-animation:gradientMove 12s ease infinite;
+animation:bgMove 15s ease infinite;
 
 color:white;
+
+overflow:hidden;
 
 height:100vh;
 
 }
 
-/* ===========================
-BACKGROUND
-=========================== */
+/* =======================================
+        BACKGROUND EFFECTS
+======================================= */
 
 #stars,
+
 #flowers,
-#sparkles{
+
+#hearts{
 
 position:fixed;
 
@@ -57,7 +64,7 @@ height:100%;
 
 pointer-events:none;
 
-z-index:1;
+z-index:0;
 
 }
 
@@ -65,29 +72,23 @@ z-index:1;
 
 position:relative;
 
-z-index:5;
-
 width:100%;
 
 height:100vh;
 
 overflow:hidden;
 
+z-index:2;
+
 }
 
-/* ===========================
-PAGE
-=========================== */
+/* =======================================
+             PAGE
+======================================= */
 
 .page{
 
 display:none;
-
-width:100%;
-
-height:100vh;
-
-padding:25px;
 
 justify-content:center;
 
@@ -95,9 +96,13 @@ align-items:center;
 
 flex-direction:column;
 
-text-align:center;
+width:100%;
 
-animation:fadePage 1s ease;
+height:100vh;
+
+padding:20px;
+
+animation:pageFade .9s ease;
 
 }
 
@@ -107,39 +112,41 @@ display:flex;
 
 }
 
-/* ===========================
-GLASS CARD
-=========================== */
+/* =======================================
+            GLASS CARD
+======================================= */
 
 .glass{
 
 width:92%;
 
-max-width:700px;
+max-width:750px;
 
-padding:35px;
+padding:30px;
 
 background:rgba(255,255,255,.08);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
 border-radius:30px;
 
-border:1px solid rgba(255,255,255,.2);
+border:1px solid rgba(255,255,255,.15);
 
 box-shadow:
 
-0 0 35px rgba(255,105,180,.25),
+0 0 20px rgba(255,0,170,.3),
 
-0 0 80px rgba(140,0,255,.15);
+0 0 50px rgba(111,0,255,.2);
 
-animation:floatCard 5s ease-in-out infinite;
+text-align:center;
+
+animation:glassFloat 5s ease-in-out infinite;
 
 }
 
-/* ===========================
-HEADINGS
-=========================== */
+/* =======================================
+             TITLES
+======================================= */
 
 h1{
 
@@ -149,27 +156,23 @@ font-size:3rem;
 
 margin-bottom:15px;
 
-color:#fff;
+color:white;
 
 text-shadow:
 
 0 0 15px hotpink,
 
-0 0 35px violet;
-
-animation:fadeUp 1.3s;
+0 0 40px violet;
 
 }
 
 h2{
 
-font-size:1.7rem;
+font-size:1.6rem;
 
 margin-bottom:15px;
 
 color:#ffd8ff;
-
-animation:fadeUp 1.5s;
 
 }
 
@@ -181,57 +184,49 @@ letter-spacing:3px;
 
 margin-bottom:15px;
 
-color:#ffd3f6;
+color:#ffe6ff;
 
 }
 
-/* ===========================
-TEXT
-=========================== */
-
 p{
 
-font-size:1.05rem;
+font-size:17px;
 
 line-height:1.9;
 
 margin-top:20px;
 
-color:#f5f5f5;
-
-animation:fadeUp 1.8s;
-
 }
 
-/* ===========================
-BUTTONS
-=========================== */
+/* =======================================
+           BUTTONS
+======================================= */
 
 button{
 
-margin-top:30px;
+margin-top:25px;
 
-padding:15px 34px;
+padding:15px 35px;
 
 border:none;
 
 border-radius:40px;
 
-background:linear-gradient(45deg,#ff2f92,#ff6ec7,#9b4dff);
+background:linear-gradient(45deg,#ff3c9d,#ff6cc4,#a855ff);
 
 color:white;
 
 font-size:17px;
 
-font-weight:600;
+font-weight:bold;
 
 cursor:pointer;
 
-transition:.35s;
+transition:.4s;
 
 box-shadow:
 
-0 0 20px rgba(255,105,180,.45);
+0 0 20px rgba(255,20,147,.5);
 
 }
 
@@ -247,33 +242,25 @@ box-shadow:
 
 }
 
-/* ===========================
-PHOTO
-=========================== */
+/* =======================================
+          PHOTO FRAME
+======================================= */
 
 .photoFrame{
 
-width:250px;
+width:240px;
 
-height:250px;
-
-border-radius:50%;
-
-padding:7px;
-
-background:
-
-linear-gradient(45deg,
-
-hotpink,
-
-violet,
-
-gold);
+height:240px;
 
 margin:auto;
 
-animation:rotateGlow 8s linear infinite;
+border-radius:50%;
+
+padding:6px;
+
+background:linear-gradient(45deg,hotpink,violet,gold);
+
+animation:rotateBorder 8s linear infinite;
 
 }
 
@@ -289,37 +276,9 @@ object-fit:cover;
 
 }
 
-/* ===========================
-LOVE CARDS
-=========================== */
-
-.card{
-
-background:rgba(255,255,255,.1);
-
-padding:18px;
-
-margin:15px;
-
-border-radius:20px;
-
-font-size:20px;
-
-transition:.4s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-background:rgba(255,255,255,.2);
-
-}
-
-/* ===========================
-LOVE METER
-=========================== */
+/* =======================================
+        LOVE METER
+======================================= */
 
 .meter{
 
@@ -329,33 +288,27 @@ height:35px;
 
 background:#222;
 
-border-radius:40px;
+border-radius:30px;
 
 overflow:hidden;
 
-margin-top:25px;
+margin-top:20px;
 
 }
 
 #loveFill{
 
-width:0%;
-
 height:100%;
 
-background:
+width:0%;
 
-linear-gradient(90deg,
-
-hotpink,
-
-red);
+background:linear-gradient(90deg,#ff1493,#ff5ea8,#ff0000);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 font-weight:bold;
 
@@ -363,11 +316,69 @@ transition:1s;
 
 }
 
-/* ===========================
-ANIMATIONS
-=========================== */
+/* =======================================
+      BASE ANIMATIONS
+======================================= */
 
-@keyframes gradientMove{
+@keyframes pageFade{
+
+from{
+
+opacity:0;
+
+transform:scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes glassFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes rotateBorder{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes bgMove{
 
 0%{
 
@@ -388,119 +399,23 @@ background-position:0% 50%;
 }
 
 }
-
-@keyframes fadePage{
-
-from{
-
-opacity:0;
-
-transform:scale(.95);
-
-}
-
-to{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes floatCard{
-
-0%{
-
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-100%{
-
-transform:translateY(0px);
-
-}
-
-}
-
-@keyframes rotateGlow{
-
-0%{
-
-transform:rotate(0deg);
-
-}
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-/* ==========================================
-           FLOATING HEARTS
-==========================================*/
-
-#hearts{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-overflow:hidden;
-
-pointer-events:none;
-
-z-index:2;
-
-}
+/* =======================================
+      FLOATING HEARTS
+======================================= */
 
 .heart{
 
-position:absolute;
+position:fixed;
 
-color:#ff4fa3;
+font-size:20px;
 
-font-size:18px;
+pointer-events:none;
 
-animation:heartFloat linear infinite;
+animation:heartFloat 8s linear infinite;
 
-opacity:.7;
+opacity:.8;
+
+z-index:1;
 
 }
 
@@ -522,7 +437,7 @@ opacity:1;
 
 100%{
 
-transform:translateY(-120px) scale(1.4);
+transform:translateY(-120px) scale(1.5);
 
 opacity:0;
 
@@ -530,9 +445,9 @@ opacity:0;
 
 }
 
-/* ==========================================
-          FALLING FLOWERS
-==========================================*/
+/* =======================================
+      FALLING FLOWERS
+======================================= */
 
 .flower{
 
@@ -540,13 +455,13 @@ position:fixed;
 
 top:-50px;
 
-font-size:22px;
+font-size:24px;
 
 pointer-events:none;
 
 animation:flowerFall linear infinite;
 
-z-index:3;
+z-index:1;
 
 }
 
@@ -554,11 +469,7 @@ z-index:3;
 
 0%{
 
-transform:
-
-translateY(-50px)
-
-rotate(0deg);
+transform:translateY(-50px) rotate(0deg);
 
 opacity:1;
 
@@ -566,11 +477,7 @@ opacity:1;
 
 100%{
 
-transform:
-
-translateY(110vh)
-
-rotate(720deg);
+transform:translateY(110vh) rotate(720deg);
 
 opacity:0;
 
@@ -578,17 +485,17 @@ opacity:0;
 
 }
 
-/* ==========================================
-             SPARKLES
-==========================================*/
+/* =======================================
+         TWINKLING STARS
+======================================= */
 
-.sparkle{
+.star{
 
-position:absolute;
+position:fixed;
 
-width:4px;
+width:3px;
 
-height:4px;
+height:3px;
 
 background:white;
 
@@ -596,11 +503,11 @@ border-radius:50%;
 
 box-shadow:
 
-0 0 10px white,
+0 0 8px white,
 
-0 0 20px pink,
+0 0 15px hotpink,
 
-0 0 30px violet;
+0 0 25px violet;
 
 animation:twinkle 2s infinite alternate;
 
@@ -612,7 +519,7 @@ animation:twinkle 2s infinite alternate;
 
 opacity:.2;
 
-transform:scale(.5);
+transform:scale(.6);
 
 }
 
@@ -626,47 +533,95 @@ transform:scale(1.8);
 
 }
 
-/* ==========================================
-             PAGE TRANSITION
-==========================================*/
+/* =======================================
+         LOVE CARDS
+======================================= */
 
-.page{
+.loveCards{
 
-transition:
+display:flex;
 
-opacity .8s,
+flex-wrap:wrap;
 
-transform .8s;
+justify-content:center;
 
-}
+gap:15px;
 
-.page.hide{
-
-opacity:0;
-
-transform:
-
-translateX(-100px)
-
-scale(.9);
+margin-top:25px;
 
 }
 
-.page.show{
+.card{
 
-opacity:1;
+min-width:170px;
 
-transform:
+padding:18px;
 
-translateX(0)
+border-radius:20px;
 
-scale(1);
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+transition:.4s;
+
+box-shadow:0 0 15px rgba(255,105,180,.2);
 
 }
 
-/* ==========================================
-             BUTTON GLOW
-==========================================*/
+.card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,.15);
+
+box-shadow:
+
+0 0 20px hotpink,
+
+0 0 40px violet;
+
+}
+
+/* =======================================
+        QUIZ BUTTONS
+======================================= */
+
+.option{
+
+display:block;
+
+width:100%;
+
+margin:12px auto;
+
+}
+
+.quizResult{
+
+margin-top:20px;
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#ffd700;
+
+}
+
+/* =======================================
+       HIDDEN BUTTON
+======================================= */
+
+.hidden{
+
+display:none;
+
+}
+
+/* =======================================
+       BUTTON SHINE
+======================================= */
 
 button{
 
@@ -686,13 +641,11 @@ top:0;
 
 left:-120%;
 
-width:80%;
+width:70%;
 
 height:100%;
 
-background:
-
-rgba(255,255,255,.4);
+background:rgba(255,255,255,.35);
 
 transform:skewX(-30deg);
 
@@ -705,38 +658,9 @@ button:hover::before{
 left:130%;
 
 }
-
-/* ==========================================
-             PHOTO EFFECT
-==========================================*/
-
-.photoFrame{
-
-box-shadow:
-
-0 0 20px hotpink,
-
-0 0 50px violet,
-
-0 0 90px deeppink;
-
-}
-
-.photoFrame img{
-
-transition:1s;
-
-}
-
-.photoFrame:hover img{
-
-transform:scale(1.08);
-
-}
-
-/* ==========================================
-             FINAL PAGE
-==========================================*/
+/* =======================================
+        FINAL PAGE STYLING
+======================================= */
 
 .finalPage{
 
@@ -744,31 +668,159 @@ background:
 
 radial-gradient(circle,
 
-rgba(255,0,120,.2),
+rgba(255,0,140,.18),
 
-rgba(0,0,0,.95));
+rgba(10,0,20,.95));
 
 }
 
 .finalText{
 
-animation:
+font-size:3rem;
 
-textGlow 2s infinite alternate;
+margin:8px 0;
 
-}
-
-@keyframes textGlow{
-
-0%{
+animation:heartBeat 2s infinite;
 
 text-shadow:
 
-0 0 10px hotpink;
+0 0 15px hotpink,
+
+0 0 30px violet,
+
+0 0 60px white;
+
+}
+
+.ending{
+
+margin-top:30px;
+
+line-height:2;
+
+font-size:20px;
+
+color:#fff;
+
+animation:fadeIn 2s;
+
+}
+
+.forever{
+
+margin-top:25px;
+
+font-size:2.5rem;
+
+animation:glowText 2s infinite alternate;
+
+}
+
+.theEnd{
+
+margin-top:25px;
+
+opacity:.8;
+
+}
+
+/* =======================================
+          RING BOX
+======================================= */
+
+.ringBox{
+
+font-size:80px;
+
+margin-top:35px;
+
+animation:ringBounce 2s infinite;
+
+cursor:pointer;
+
+}
+
+.ringText{
+
+margin-top:15px;
+
+font-size:20px;
+
+color:#ffe6ff;
+
+}
+
+.yesButton{
+
+margin-top:20px;
+
+font-size:20px;
+
+padding:16px 40px;
+
+}
+
+/* =======================================
+        HEARTBEAT
+======================================= */
+
+@keyframes heartBeat{
+
+0%{
+
+transform:scale(1);
+
+}
+
+20%{
+
+transform:scale(1.08);
+
+}
+
+40%{
+
+transform:scale(1);
+
+}
+
+60%{
+
+transform:scale(1.1);
+
+}
+
+80%{
+
+transform:scale(1);
 
 }
 
 100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* =======================================
+       GLOW TEXT
+======================================= */
+
+@keyframes glowText{
+
+from{
+
+text-shadow:
+
+0 0 10px hotpink,
+
+0 0 20px violet;
+
+}
+
+to{
 
 text-shadow:
 
@@ -782,21 +834,33 @@ text-shadow:
 
 }
 
-/* ==========================================
-             RING
-==========================================*/
+/* =======================================
+       FADE IN
+======================================= */
 
-.ringBox{
+@keyframes fadeIn{
 
-font-size:70px;
+from{
 
-margin-top:40px;
+opacity:0;
 
-animation:
-
-ringBounce 2s infinite;
+transform:translateY(30px);
 
 }
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* =======================================
+      RING BOUNCE
+======================================= */
 
 @keyframes ringBounce{
 
@@ -808,7 +872,7 @@ transform:translateY(0);
 
 50%{
 
-transform:translateY(-15px);
+transform:translateY(-12px);
 
 }
 
@@ -820,255 +884,23 @@ transform:translateY(0);
 
 }
 
-.yesButton{
+/* =======================================
+      LOVE METER EFFECT
+======================================= */
 
-margin-top:25px;
-
-font-size:22px;
-
-padding:18px 45px;
-
-}
-
-/* ==========================================
-           MOBILE RESPONSIVE
-==========================================*/
-
-@media(max-width:768px){
-
-.glass{
-
-width:94%;
-
-padding:22px;
-
-}
-
-h1{
-
-font-size:2.2rem;
-
-}
-
-h2{
-
-font-size:1.3rem;
-
-}
-
-p{
-
-font-size:15px;
-
-line-height:1.8;
-
-}
-
-.photoFrame{
-
-width:190px;
-
-height:190px;
-
-}
-
-button{
-
-font-size:15px;
-
-padding:13px 25px;
-
-}
-
-.card{
+#loveFill{
 
 font-size:16px;
 
-}
+text-shadow:
 
-}
-/* ==========================================
-        MOVING STARS
-==========================================*/
-
-.star{
-
-position:fixed;
-
-width:2px;
-
-height:2px;
-
-background:white;
-
-border-radius:50%;
-
-animation:starMove linear infinite;
-
-opacity:.8;
+0 0 10px white;
 
 }
 
-@keyframes starMove{
-
-0%{
-
-transform:translateY(0);
-
-opacity:.2;
-
-}
-
-50%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh);
-
-opacity:0;
-
-}
-
-}
-
-/* ==========================================
-          AURORA LIGHT
-==========================================*/
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-top:-50%;
-
-left:-50%;
-
-width:200%;
-
-height:200%;
-
-background:
-
-radial-gradient(circle at 20% 30%,
-rgba(255,0,120,.15),
-transparent 40%),
-
-radial-gradient(circle at 80% 40%,
-rgba(140,0,255,.15),
-transparent 45%),
-
-radial-gradient(circle at 50% 80%,
-rgba(255,255,255,.06),
-transparent 40%);
-
-animation:aurora 16s linear infinite;
-
-pointer-events:none;
-
-z-index:0;
-
-}
-
-@keyframes aurora{
-
-0%{
-
-transform:rotate(0deg);
-
-}
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-/* ==========================================
-          HEARTBEAT
-==========================================*/
-
-.loveTitle,
-.finalText{
-
-animation:heartbeat 2s infinite;
-
-}
-
-@keyframes heartbeat{
-
-0%{
-
-transform:scale(1);
-
-}
-
-15%{
-
-transform:scale(1.08);
-
-}
-
-30%{
-
-transform:scale(1);
-
-}
-
-45%{
-
-transform:scale(1.1);
-
-}
-
-60%{
-
-transform:scale(1);
-
-}
-
-100%{
-
-transform:scale(1);
-
-}
-
-}
-
-/* ==========================================
-        GLASS HOVER
-==========================================*/
-
-.glass{
-
-transition:.6s;
-
-}
-
-.glass:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-
-0 0 35px hotpink,
-
-0 0 80px violet,
-
-0 0 120px rgba(255,255,255,.2);
-
-}
-
-/* ==========================================
-         CUSTOM SCROLLBAR
-==========================================*/
+/* =======================================
+        SCROLLBAR
+======================================= */
 
 ::-webkit-scrollbar{
 
@@ -1089,151 +921,256 @@ border-radius:20px;
 background:#111;
 
 }
+/* =======================================
+      AURORA LIGHT EFFECT
+======================================= */
 
-/* ==========================================
-          LOVE CARDS
-==========================================*/
+body::before{
 
-.loveCards{
+content:"";
 
-display:flex;
+position:fixed;
 
-flex-wrap:wrap;
+top:-50%;
 
-justify-content:center;
+left:-50%;
 
-gap:15px;
+width:200%;
 
-margin-top:20px;
+height:200%;
+
+background:
+
+radial-gradient(circle at 20% 30%,rgba(255,0,140,.15),transparent 40%),
+
+radial-gradient(circle at 80% 20%,rgba(138,43,226,.15),transparent 45%),
+
+radial-gradient(circle at 50% 80%,rgba(255,255,255,.05),transparent 40%);
+
+animation:auroraMove 18s linear infinite;
+
+pointer-events:none;
+
+z-index:-1;
 
 }
 
-.card{
-
-min-width:180px;
-
-animation:cardFloat 4s ease-in-out infinite;
-
-}
-
-.card:nth-child(even){
-
-animation-delay:1s;
-
-}
-
-@keyframes cardFloat{
+@keyframes auroraMove{
 
 0%{
 
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-10px);
+transform:rotate(0deg);
 
 }
 
 100%{
 
-transform:translateY(0);
+transform:rotate(360deg);
 
 }
 
 }
 
-/* ==========================================
-        FINAL MESSAGE
-==========================================*/
+/* =======================================
+        GLASS HOVER EFFECT
+======================================= */
 
-.ending{
+.glass{
 
-font-size:20px;
-
-margin-top:35px;
-
-line-height:2;
-
-animation:fadeUp 2s;
+transition:.6s ease;
 
 }
 
-.forever{
+.glass:hover{
 
-margin-top:30px;
-
-font-size:42px;
-
-color:#fff;
-
-text-shadow:
-
-0 0 15px hotpink,
-
-0 0 30px violet,
-
-0 0 60px white;
-
-animation:heartbeat 2s infinite;
-
-}
-
-.theEnd{
-
-margin-top:25px;
-
-opacity:.8;
-
-}
-
-/* ==========================================
-       GLOWING BUTTON
-==========================================*/
-
-.nextBtn{
-
-animation:pulseButton 2s infinite;
-
-}
-
-@keyframes pulseButton{
-
-0%{
-
-box-shadow:0 0 10px hotpink;
-
-}
-
-50%{
+transform:translateY(-8px);
 
 box-shadow:
 
 0 0 25px hotpink,
 
-0 0 45px violet;
+0 0 50px violet,
+
+0 0 100px rgba(255,255,255,.2);
+
+}
+
+/* =======================================
+        LOVE TITLE
+======================================= */
+
+.loveTitle{
+
+animation:loveGlow 2.5s infinite alternate;
+
+}
+
+@keyframes loveGlow{
+
+0%{
+
+text-shadow:
+
+0 0 10px hotpink,
+
+0 0 20px violet;
 
 }
 
 100%{
 
-box-shadow:0 0 10px hotpink;
+text-shadow:
+
+0 0 25px hotpink,
+
+0 0 45px violet,
+
+0 0 70px white;
 
 }
 
 }
 
-/* ==========================================
-      SMOOTH FADE FOR ALL
-==========================================*/
+/* =======================================
+        PAGE TRANSITION
+======================================= */
 
-.page *{
+.page{
 
-animation-fill-mode:both;
+transition:
+
+opacity .7s,
+
+transform .7s;
 
 }
 
-/* ==========================================
-             END CSS
-==========================================*/
+.page.hide{
+
+opacity:0;
+
+transform:translateX(-80px);
+
+}
+
+.page.show{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+/* =======================================
+        PHOTO GLOW
+======================================= */
+
+.photoFrame{
+
+box-shadow:
+
+0 0 20px hotpink,
+
+0 0 50px violet,
+
+0 0 90px deeppink;
+
+}
+
+/* =======================================
+      MOBILE RESPONSIVE
+======================================= */
+
+@media(max-width:768px){
+
+.glass{
+
+width:94%;
+
+padding:22px;
+
+border-radius:22px;
+
+}
+
+h1{
+
+font-size:2.2rem;
+
+}
+
+h2{
+
+font-size:1.3rem;
+
+}
+
+h3{
+
+font-size:1rem;
+
+}
+
+p{
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+.photoFrame{
+
+width:180px;
+
+height:180px;
+
+}
+
+button{
+
+width:100%;
+
+font-size:15px;
+
+padding:14px;
+
+}
+
+.card{
+
+width:100%;
+
+font-size:15px;
+
+}
+
+.finalText{
+
+font-size:2rem;
+
+}
+
+.forever{
+
+font-size:1.8rem;
+
+}
+
+}
+
+/* =======================================
+      SMOOTH SELECTION
+======================================= */
+
+::selection{
+
+background:hotpink;
+
+color:white;
+
+}
+
+/* =======================================
+          END OF CSS
+======================================= */

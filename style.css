@@ -1,1 +1,1239 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@300;400;500;700&display=swap');
+
+/* ===========================
+RESET
+=========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+overflow:hidden;
+
+background:
+linear-gradient(135deg,#090014,#17002f,#28003d,#0b0015);
+
+background-size:400% 400%;
+
+animation:gradientMove 12s ease infinite;
+
+color:white;
+
+height:100vh;
+
+}
+
+/* ===========================
+BACKGROUND
+=========================== */
+
+#stars,
+#flowers,
+#sparkles{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+.container{
+
+position:relative;
+
+z-index:5;
+
+width:100%;
+
+height:100vh;
+
+overflow:hidden;
+
+}
+
+/* ===========================
+PAGE
+=========================== */
+
+.page{
+
+display:none;
+
+width:100%;
+
+height:100vh;
+
+padding:25px;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-align:center;
+
+animation:fadePage 1s ease;
+
+}
+
+.page.active{
+
+display:flex;
+
+}
+
+/* ===========================
+GLASS CARD
+=========================== */
+
+.glass{
+
+width:92%;
+
+max-width:700px;
+
+padding:35px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,.2);
+
+box-shadow:
+
+0 0 35px rgba(255,105,180,.25),
+
+0 0 80px rgba(140,0,255,.15);
+
+animation:floatCard 5s ease-in-out infinite;
+
+}
+
+/* ===========================
+HEADINGS
+=========================== */
+
+h1{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:3rem;
+
+margin-bottom:15px;
+
+color:#fff;
+
+text-shadow:
+
+0 0 15px hotpink,
+
+0 0 35px violet;
+
+animation:fadeUp 1.3s;
+
+}
+
+h2{
+
+font-size:1.7rem;
+
+margin-bottom:15px;
+
+color:#ffd8ff;
+
+animation:fadeUp 1.5s;
+
+}
+
+h3{
+
+font-size:1.2rem;
+
+letter-spacing:3px;
+
+margin-bottom:15px;
+
+color:#ffd3f6;
+
+}
+
+/* ===========================
+TEXT
+=========================== */
+
+p{
+
+font-size:1.05rem;
+
+line-height:1.9;
+
+margin-top:20px;
+
+color:#f5f5f5;
+
+animation:fadeUp 1.8s;
+
+}
+
+/* ===========================
+BUTTONS
+=========================== */
+
+button{
+
+margin-top:30px;
+
+padding:15px 34px;
+
+border:none;
+
+border-radius:40px;
+
+background:linear-gradient(45deg,#ff2f92,#ff6ec7,#9b4dff);
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:
+
+0 0 20px rgba(255,105,180,.45);
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+
+0 0 35px hotpink,
+
+0 0 60px violet;
+
+}
+
+/* ===========================
+PHOTO
+=========================== */
+
+.photoFrame{
+
+width:250px;
+
+height:250px;
+
+border-radius:50%;
+
+padding:7px;
+
+background:
+
+linear-gradient(45deg,
+
+hotpink,
+
+violet,
+
+gold);
+
+margin:auto;
+
+animation:rotateGlow 8s linear infinite;
+
+}
+
+.photoFrame img{
+
+width:100%;
+
+height:100%;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+/* ===========================
+LOVE CARDS
+=========================== */
+
+.card{
+
+background:rgba(255,255,255,.1);
+
+padding:18px;
+
+margin:15px;
+
+border-radius:20px;
+
+font-size:20px;
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+background:rgba(255,255,255,.2);
+
+}
+
+/* ===========================
+LOVE METER
+=========================== */
+
+.meter{
+
+width:100%;
+
+height:35px;
+
+background:#222;
+
+border-radius:40px;
+
+overflow:hidden;
+
+margin-top:25px;
+
+}
+
+#loveFill{
+
+width:0%;
+
+height:100%;
+
+background:
+
+linear-gradient(90deg,
+
+hotpink,
+
+red);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:bold;
+
+transition:1s;
+
+}
+
+/* ===========================
+ANIMATIONS
+=========================== */
+
+@keyframes gradientMove{
+
+0%{
+
+background-position:0% 50%;
+
+}
+
+50%{
+
+background-position:100% 50%;
+
+}
+
+100%{
+
+background-position:0% 50%;
+
+}
+
+}
+
+@keyframes fadePage{
+
+from{
+
+opacity:0;
+
+transform:scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+@keyframes rotateGlow{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+/* ==========================================
+           FLOATING HEARTS
+==========================================*/
+
+#hearts{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:2;
+
+}
+
+.heart{
+
+position:absolute;
+
+color:#ff4fa3;
+
+font-size:18px;
+
+animation:heartFloat linear infinite;
+
+opacity:.7;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:translateY(100vh) scale(.5);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120px) scale(1.4);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================
+          FALLING FLOWERS
+==========================================*/
+
+.flower{
+
+position:fixed;
+
+top:-50px;
+
+font-size:22px;
+
+pointer-events:none;
+
+animation:flowerFall linear infinite;
+
+z-index:3;
+
+}
+
+@keyframes flowerFall{
+
+0%{
+
+transform:
+
+translateY(-50px)
+
+rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+
+translateY(110vh)
+
+rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================
+             SPARKLES
+==========================================*/
+
+.sparkle{
+
+position:absolute;
+
+width:4px;
+
+height:4px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+
+0 0 10px white,
+
+0 0 20px pink,
+
+0 0 30px violet;
+
+animation:twinkle 2s infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.5);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1.8);
+
+}
+
+}
+
+/* ==========================================
+             PAGE TRANSITION
+==========================================*/
+
+.page{
+
+transition:
+
+opacity .8s,
+
+transform .8s;
+
+}
+
+.page.hide{
+
+opacity:0;
+
+transform:
+
+translateX(-100px)
+
+scale(.9);
+
+}
+
+.page.show{
+
+opacity:1;
+
+transform:
+
+translateX(0)
+
+scale(1);
+
+}
+
+/* ==========================================
+             BUTTON GLOW
+==========================================*/
+
+button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+button::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:80%;
+
+height:100%;
+
+background:
+
+rgba(255,255,255,.4);
+
+transform:skewX(-30deg);
+
+transition:.8s;
+
+}
+
+button:hover::before{
+
+left:130%;
+
+}
+
+/* ==========================================
+             PHOTO EFFECT
+==========================================*/
+
+.photoFrame{
+
+box-shadow:
+
+0 0 20px hotpink,
+
+0 0 50px violet,
+
+0 0 90px deeppink;
+
+}
+
+.photoFrame img{
+
+transition:1s;
+
+}
+
+.photoFrame:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================================
+             FINAL PAGE
+==========================================*/
+
+.finalPage{
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,0,120,.2),
+
+rgba(0,0,0,.95));
+
+}
+
+.finalText{
+
+animation:
+
+textGlow 2s infinite alternate;
+
+}
+
+@keyframes textGlow{
+
+0%{
+
+text-shadow:
+
+0 0 10px hotpink;
+
+}
+
+100%{
+
+text-shadow:
+
+0 0 20px hotpink,
+
+0 0 40px violet,
+
+0 0 70px white;
+
+}
+
+}
+
+/* ==========================================
+             RING
+==========================================*/
+
+.ringBox{
+
+font-size:70px;
+
+margin-top:40px;
+
+animation:
+
+ringBounce 2s infinite;
+
+}
+
+@keyframes ringBounce{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.yesButton{
+
+margin-top:25px;
+
+font-size:22px;
+
+padding:18px 45px;
+
+}
+
+/* ==========================================
+           MOBILE RESPONSIVE
+==========================================*/
+
+@media(max-width:768px){
+
+.glass{
+
+width:94%;
+
+padding:22px;
+
+}
+
+h1{
+
+font-size:2.2rem;
+
+}
+
+h2{
+
+font-size:1.3rem;
+
+}
+
+p{
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+.photoFrame{
+
+width:190px;
+
+height:190px;
+
+}
+
+button{
+
+font-size:15px;
+
+padding:13px 25px;
+
+}
+
+.card{
+
+font-size:16px;
+
+}
+
+}
+/* ==========================================
+        MOVING STARS
+==========================================*/
+
+.star{
+
+position:fixed;
+
+width:2px;
+
+height:2px;
+
+background:white;
+
+border-radius:50%;
+
+animation:starMove linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes starMove{
+
+0%{
+
+transform:translateY(0);
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================
+          AURORA LIGHT
+==========================================*/
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-50%;
+
+left:-50%;
+
+width:200%;
+
+height:200%;
+
+background:
+
+radial-gradient(circle at 20% 30%,
+rgba(255,0,120,.15),
+transparent 40%),
+
+radial-gradient(circle at 80% 40%,
+rgba(140,0,255,.15),
+transparent 45%),
+
+radial-gradient(circle at 50% 80%,
+rgba(255,255,255,.06),
+transparent 40%);
+
+animation:aurora 16s linear infinite;
+
+pointer-events:none;
+
+z-index:0;
+
+}
+
+@keyframes aurora{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ==========================================
+          HEARTBEAT
+==========================================*/
+
+.loveTitle,
+.finalText{
+
+animation:heartbeat 2s infinite;
+
+}
+
+@keyframes heartbeat{
+
+0%{
+
+transform:scale(1);
+
+}
+
+15%{
+
+transform:scale(1.08);
+
+}
+
+30%{
+
+transform:scale(1);
+
+}
+
+45%{
+
+transform:scale(1.1);
+
+}
+
+60%{
+
+transform:scale(1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* ==========================================
+        GLASS HOVER
+==========================================*/
+
+.glass{
+
+transition:.6s;
+
+}
+
+.glass:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+
+0 0 35px hotpink,
+
+0 0 80px violet,
+
+0 0 120px rgba(255,255,255,.2);
+
+}
+
+/* ==========================================
+         CUSTOM SCROLLBAR
+==========================================*/
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:hotpink;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+/* ==========================================
+          LOVE CARDS
+==========================================*/
+
+.loveCards{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.card{
+
+min-width:180px;
+
+animation:cardFloat 4s ease-in-out infinite;
+
+}
+
+.card:nth-child(even){
+
+animation-delay:1s;
+
+}
+
+@keyframes cardFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================
+        FINAL MESSAGE
+==========================================*/
+
+.ending{
+
+font-size:20px;
+
+margin-top:35px;
+
+line-height:2;
+
+animation:fadeUp 2s;
+
+}
+
+.forever{
+
+margin-top:30px;
+
+font-size:42px;
+
+color:#fff;
+
+text-shadow:
+
+0 0 15px hotpink,
+
+0 0 30px violet,
+
+0 0 60px white;
+
+animation:heartbeat 2s infinite;
+
+}
+
+.theEnd{
+
+margin-top:25px;
+
+opacity:.8;
+
+}
+
+/* ==========================================
+       GLOWING BUTTON
+==========================================*/
+
+.nextBtn{
+
+animation:pulseButton 2s infinite;
+
+}
+
+@keyframes pulseButton{
+
+0%{
+
+box-shadow:0 0 10px hotpink;
+
+}
+
+50%{
+
+box-shadow:
+
+0 0 25px hotpink,
+
+0 0 45px violet;
+
+}
+
+100%{
+
+box-shadow:0 0 10px hotpink;
+
+}
+
+}
+
+/* ==========================================
+      SMOOTH FADE FOR ALL
+==========================================*/
+
+.page *{
+
+animation-fill-mode:both;
+
+}
+
+/* ==========================================
+             END CSS
+==========================================*/
